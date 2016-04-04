@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/image_cat"
+        android:layout_width="@dimen/cat_image_size"
+        android:layout_height="@dimen/cat_image_size"
+        android:layout_marginLeft="@dimen/item_padding"
+        android:layout_marginStart="@dimen/item_padding"
+        android:layout_marginRight="@dimen/item_padding"
+        android:layout_marginEnd="@dimen/item_padding"/>
+
+    <TextView
+        android:id="@+id/text_cat_fact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+        tools:text="Cat fact"/>
+
+</LinearLayout>
