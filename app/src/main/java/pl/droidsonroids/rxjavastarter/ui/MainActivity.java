@@ -4,25 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import java.util.List;
 import java.util.Random;
 import pl.droidsonroids.rxjavastarter.R;
-import pl.droidsonroids.rxjavastarter.model.CatFactResponse;
 import pl.droidsonroids.rxjavastarter.model.CatFactWithImage;
 import pl.droidsonroids.rxjavastarter.model.api.CatFactsService;
 import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        initCatFactsList();
+        initRecyclerView();
     }
 
-    private void initCatFactsList() {
+    private void initRecyclerView() {
         mCatFactsAdapter = new CatFactsAdapter(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mCatFactsAdapter);
