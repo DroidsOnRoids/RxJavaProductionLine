@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
 
     private final int[] catImagesId = {R.drawable.cat1, R.drawable.cat2, R.drawable.cat3};
-    private CatFactsService mCatFactsService;
     private CatFactsAdapter mCatFactsAdapter;
     private Subscription mSubscription;
 
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mCatFactsService = CatFactsService.getInstance();
 
         initCatFactsList();
     }
@@ -57,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        mSubscription.unsubscribe();
+    protected void onStop() {
+        super.onStop();
+        if (mSubscription != null) mSubscription.unsubscribe();
     }
 
     private void loadCatFacts() {
-        mSubscription = mCatFactsService.getCatFacts(100)
+        mSubscription = CatFactsService.getInstance().getCatFacts(100)
                 .map(catFactResponse -> catFactResponse.getFacts())
                 .flatMap(catFacts -> Observable.from(catFacts))
                 .distinct()
